@@ -8,15 +8,16 @@
     :root {
       --bg: #f8f8f8;
       --white: #ffffff;
-      --dark: #2b2b2b;
-      --accent: #8b1c1c;
-      --accent-light: #b23a3a;
-      --muted: #777777;
+      --dark: #0D3B66; /* deep blue */
+      --accent: #F4D35E; /* gold */
+      --accent-light: #FFD166; /* lighter gold */
+      --muted: #555555;
       --radius: 12px;
       --shadow: 0 4px 20px rgba(0,0,0,0.1);
       --max-width: 1200px;
       font-family: 'Helvetica Neue', Arial, sans-serif;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { background: var(--bg); color: var(--dark); line-height: 1.6; }
     a { color: var(--accent); text-decoration: none; }
@@ -135,21 +136,37 @@
       margin-bottom: 8px;
     }
 
+    /* Gallery Slider */
+    .slider {
+      position: relative;
+      overflow: hidden;
+    }
     .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      display: flex;
+      transition: transform 0.4s ease-in-out;
     }
     .gallery img {
-      width: 100%;
+      min-width: 100%;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      transition: transform 0.3s;
       cursor: pointer;
     }
-    .gallery img:hover {
-      transform: scale(1.03);
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(13,59,102,0.7);
+      color: white;
+      border: none;
+      font-size: 28px;
+      padding: 8px 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
     }
+    .prev { left: 10px; }
+    .next { right: 10px; }
+    .prev:hover, .next:hover { background: var(--accent-light); }
 
     .hours-loc {
       display: grid;
@@ -260,11 +277,15 @@
     <!-- Gallery Section -->
     <section id="gallery">
       <h2>Gallery</h2>
-      <div class="gallery">
-        <img src="images/brisket.jpeg" alt="Cut of meat 1">
-        <img src="images/cookingmeat.jpeg" alt="Cut or sausage">
-        <img src="images/ham.jpeg" alt="Smoked meat">
-        <img src="images/Owners.jpeg" alt="Butcher in action">
+      <div class="slider">
+        <button class="prev">&#10094;</button>
+        <div class="gallery">
+          <img src="images/brisket.jpeg" alt="Cut of meat 1">
+          <img src="images/cookingmeat.jpeg" alt="Cut or sausage">
+          <img src="images/ham.jpeg" alt="Smoked meat">
+          <img src="images/Owners.jpeg" alt="Butcher in action">
+        </div>
+        <button class="next">&#10095;</button>
       </div>
     </section>
 
@@ -290,7 +311,7 @@
     <section id="contact">
       <h2>Contact</h2>
       <div class="card">
-        <p>📞 <a href="tel:(316)-788-9494">(555) 555-5555</a></p>
+        <p>📞 <a href="tel:(316)-788-9494">(316)-788-9494</a></p>
         <p>✉️ <a href="mailto:info@example.com">info@example.com</a></p>
         <p>📘 <a href="https://www.facebook.com/sigsgourmetbutchershop" target="_blank">Facebook Page</a></p>
       </div>
@@ -303,6 +324,22 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const gallery = document.querySelector('.gallery');
+    const slides = document.querySelectorAll('.gallery img');
+    const prev = document.querySelector('.prev');
+    const next = document.querySelector('.next');
+    let index = 0;
+
+    function showSlide(i) {
+      if (i < 0) index = slides.length - 1;
+      else if (i >= slides.length) index = 0;
+      else index = i;
+      gallery.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    prev.addEventListener('click', () => showSlide(index - 1));
+    next.addEventListener('click', () => showSlide(index + 1));
   </script>
 </body>
 </html>
