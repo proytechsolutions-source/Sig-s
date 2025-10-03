@@ -8,9 +8,9 @@
     :root {
       --bg: #f8f8f8;
       --white: #ffffff;
-      --dark: #0D3B66; /* blue as main text */
-      --accent: #F4D35E; /* gold for buttons/headings */
-      --accent-light: #FFD166; /* lighter gold for hover effects */
+      --dark: #0D3B66; /* blue text */
+      --accent: #F4D35E; /* gold accent */
+      --accent-light: #FFD166;
       --muted: #555555;
       --radius: 12px;
       --shadow: 0 4px 20px rgba(0,0,0,0.1);
@@ -35,20 +35,9 @@
       justify-content: space-between;
       padding: 20px 0;
     }
-    header .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: var(--dark);
-    }
-    header nav a {
-      margin-left: 24px;
-      font-size: 16px;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    header nav a:hover {
-      color: var(--accent-light);
-    }
+    header .logo { font-size: 24px; font-weight: bold; color: var(--dark); }
+    header nav a { margin-left: 24px; font-size: 16px; font-weight: 500; transition: color 0.2s; }
+    header nav a:hover { color: var(--accent-light); }
 
     /* Hero / Banner */
     .hero {
@@ -56,19 +45,10 @@
       grid-template-columns: 1fr 1fr;
       align-items: center;
       gap: 40px;
-      padding: 80px 0;
+      padding: 60px 0;
     }
-    .hero-text h1 {
-      font-size: 48px;
-      color: var(--dark);
-      margin-bottom: 20px;
-    }
-    .hero-text p {
-      font-size: 18px;
-      color: var(--muted);
-      margin-bottom: 30px;
-      max-width: 500px;
-    }
+    .hero-text h1 { font-size: 48px; color: var(--dark); margin-bottom: 20px; }
+    .hero-text p { font-size: 18px; color: var(--muted); margin-bottom: 30px; max-width: 500px; }
     .hero-text .buttons a {
       display: inline-block;
       padding: 14px 28px;
@@ -77,77 +57,41 @@
       margin-right: 16px;
       transition: background-color 0.2s;
     }
-    .btn-primary {
-      background: var(--accent);
-      color: var(--dark);
-    }
-    .btn-primary:hover {
-      background: var(--accent-light);
-      color: var(--dark);
-    }
-    .btn-outline {
-      border: 2px solid var(--accent);
-      color: var(--accent);
-    }
-    .btn-outline:hover {
-      background: var(--accent);
-      color: var(--dark);
-    }
+    .btn-primary { background: var(--accent); color: var(--dark); }
+    .btn-primary:hover { background: var(--accent-light); color: var(--dark); }
+    .btn-outline { border: 2px solid var(--accent); color: var(--accent); }
+    .btn-outline:hover { background: var(--accent); color: var(--dark); }
 
-    .hero-image img {
-      width: 100%;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
+    .hero-image img { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow); }
 
-    section {
-      padding: 60px 0;
-    }
-    section h2 {
-      font-size: 32px;
-      text-align: center;
-      margin-bottom: 40px;
-      color: var(--dark);
-    }
+    section { padding: 60px 0; }
+    section h2 { font-size: 32px; text-align: center; margin-bottom: 40px; color: var(--dark); }
 
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3,1fr);
       gap: 24px;
     }
-    .card {
-      background: var(--white);
-      padding: 24px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      transition: transform 0.2s;
-    }
-    .card:hover {
-      transform: translateY(-6px);
-    }
-    .card h3 {
-      margin-bottom: 14px;
-      color: var(--dark);
-    }
-    .card p, .card ul {
-      color: var(--muted);
-      font-size: 15px;
-    }
-    .card ul li {
-      margin-bottom: 8px;
-    }
+    .card { background: var(--white); padding: 24px; border-radius: var(--radius); box-shadow: var(--shadow); transition: transform 0.2s; }
+    .card:hover { transform: translateY(-6px); }
+    .card h3 { margin-bottom: 14px; color: var(--dark); }
+    .card p, .card ul { color: var(--muted); font-size: 15px; }
+    .card ul li { margin-bottom: 8px; }
 
-    /* Gallery Slider */
+    /* Gallery Slider 3-wide */
     .slider {
       position: relative;
       overflow: hidden;
+      margin: 0 -10px; /* reduce zoomed-in effect */
     }
     .gallery {
       display: flex;
       transition: transform 0.4s ease-in-out;
+      gap: 20px;
+      padding: 0 10px;
     }
     .gallery img {
-      min-width: 100%;
+      flex: 0 0 calc(33.333% - 13.33px); /* 3 images wide with gap */
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       cursor: pointer;
@@ -156,7 +100,7 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(244,211,94,0.8); /* gold */
+      background: rgba(244,211,94,0.8);
       color: var(--dark);
       border: none;
       font-size: 28px;
@@ -169,57 +113,20 @@
     .next { right: 10px; }
     .prev:hover, .next:hover { background: var(--accent-light); }
 
-    .hours-loc {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-    }
-    .hours-loc .hours, .hours-loc .location {
-      background: var(--white);
-      padding: 24px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    .hours .row {
-      display: flex;
-      justify-content: space-between;
-      padding: 8px 0;
-      border-bottom: 1px solid #eee;
-    }
-    .hours .row:last-child {
-      border-bottom: none;
-    }
+    .hours-loc { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .hours-loc .hours, .hours-loc .location { background: var(--white); padding: 24px; border-radius: var(--radius); box-shadow: var(--shadow); }
+    .hours .row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee; }
+    .hours .row:last-child { border-bottom: none; }
+    .location iframe { width: 100%; height: 220px; border: 0; border-radius: var(--radius); margin-top: 16px; }
 
-    .location iframe {
-      width: 100%;
-      height: 220px;
-      border: 0;
-      border-radius: var(--radius);
-      margin-top: 16px;
-    }
-
-    footer {
-      background: var(--dark);
-      color: var(--white);
-      text-align: center;
-      padding: 30px 0;
-      margin-top: 60px;
-    }
-    footer small {
-      opacity: 0.8;
-    }
+    footer { background: var(--dark); color: var(--white); text-align: center; padding: 30px 0; margin-top: 60px; }
+    footer small { opacity: 0.8; }
 
     @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .hero-text .buttons {
-        justify-content: center;
-      }
-      .hours-loc {
-        grid-template-columns: 1fr;
-      }
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .hero-text .buttons { justify-content: center; }
+      .hours-loc { grid-template-columns: 1fr; }
+      .gallery img { flex: 0 0 100%; } /* mobile 1 wide */
     }
   </style>
 </head>
@@ -285,6 +192,7 @@
           <img src="images/cookingmeat.jpeg" alt="Cut or sausage">
           <img src="images/ham.jpeg" alt="Smoked meat">
           <img src="images/Owners.jpeg" alt="Butcher in action">
+          <!-- add more images -->
         </div>
         <button class="next">&#10095;</button>
       </div>
@@ -333,10 +241,11 @@
     let index = 0;
 
     function showSlide(i) {
-      if (i < 0) index = slides.length - 1;
-      else if (i >= slides.length) index = 0;
+      const total = slides.length;
+      if (i < 0) index = total - 3; // show last 3
+      else if (i > total - 3) index = 0;
       else index = i;
-      gallery.style.transform = `translateX(-${index * 100}%)`;
+      gallery.style.transform = `translateX(-${index * (100 / 3)}%)`; 
     }
 
     prev.addEventListener('click', () => showSlide(index - 1));
