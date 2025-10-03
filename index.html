@@ -8,9 +8,9 @@
     :root {
       --bg: #f8f8f8;
       --white: #ffffff;
-      --dark: #0D3B66; /* deep blue */
-      --accent: #F4D35E; /* gold */
-      --accent-light: #FFD166; /* lighter gold */
+      --dark: #0D3B66; /* blue as main text */
+      --accent: #F4D35E; /* gold for buttons/headings */
+      --accent-light: #FFD166; /* lighter gold for hover effects */
       --muted: #555555;
       --radius: 12px;
       --shadow: 0 4px 20px rgba(0,0,0,0.1);
@@ -60,7 +60,7 @@
     }
     .hero-text h1 {
       font-size: 48px;
-      color: var(--accent);
+      color: var(--dark);
       margin-bottom: 20px;
     }
     .hero-text p {
@@ -79,10 +79,11 @@
     }
     .btn-primary {
       background: var(--accent);
-      color: white;
+      color: var(--dark);
     }
     .btn-primary:hover {
       background: var(--accent-light);
+      color: var(--dark);
     }
     .btn-outline {
       border: 2px solid var(--accent);
@@ -90,7 +91,7 @@
     }
     .btn-outline:hover {
       background: var(--accent);
-      color: white;
+      color: var(--dark);
     }
 
     .hero-image img {
@@ -106,7 +107,7 @@
       font-size: 32px;
       text-align: center;
       margin-bottom: 40px;
-      color: var(--accent);
+      color: var(--dark);
     }
 
     .grid-3 {
@@ -155,8 +156,8 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(13,59,102,0.7);
-      color: white;
+      background: rgba(244,211,94,0.8); /* gold */
+      color: var(--dark);
       border: none;
       font-size: 28px;
       padding: 8px 12px;
@@ -199,7 +200,7 @@
 
     footer {
       background: var(--dark);
-      color: white;
+      color: var(--white);
       text-align: center;
       padding: 30px 0;
       margin-top: 60px;
@@ -311,7 +312,7 @@
     <section id="contact">
       <h2>Contact</h2>
       <div class="card">
-        <p>📞 <a href="tel:(316)-788-9494">(316)-788-9494</a></p>
+        <p>📞 <a href="tel:(316)-788-9494">(555) 555-5555</a></p>
         <p>✉️ <a href="mailto:info@example.com">info@example.com</a></p>
         <p>📘 <a href="https://www.facebook.com/sigsgourmetbutchershop" target="_blank">Facebook Page</a></p>
       </div>
@@ -343,3 +344,4 @@
   </script>
 </body>
 </html>
+
