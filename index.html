@@ -1,81 +1,214 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sig's Gourmet Butcher Shop</title>
-  <meta name="description" content="Sig's Gourmet Butcher Shop — locally crafted premium cuts. Hours, location, and a gallery of our products." />
-  <meta name="theme-color" content="#7a1f1f" />
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sig’s Gourmet Butcher Shop</title>
   <style>
     :root {
-      --bg: #faf9f7;
-      --card: #ffffff;
-      --accent: #7a1f1f;
-      --accent-light: #a64242;
-      --text: #1c1c1c;
-      --muted: #666666;
-      --radius: 16px;
+      --bg: #f8f8f8;
+      --white: #ffffff;
+      --dark: #2b2b2b;
+      --accent: #8b1c1c;
+      --accent-light: #b23a3a;
+      --muted: #777777;
+      --radius: 12px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.1);
       --max-width: 1200px;
-      --shadow: 0 4px 16px rgba(0,0,0,0.08);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--bg); color: var(--text); line-height: 1.6; }
+    body { background: var(--bg); color: var(--dark); line-height: 1.6; }
     a { color: var(--accent); text-decoration: none; }
+    .container { max-width: var(--max-width); margin: auto; padding: 20px; }
 
-    .container { max-width: var(--max-width); margin: auto; padding: 0 20px; }
+    header {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0; z-index: 100;
+    }
+    header .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+    }
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--dark);
+    }
+    header nav a {
+      margin-left: 24px;
+      font-size: 16px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    header nav a:hover {
+      color: var(--accent-light);
+    }
 
-    header { background: var(--card); box-shadow: var(--shadow); padding: 20px 0; position: sticky; top: 0; z-index: 50; }
-    header .brand { display: flex; align-items: center; gap: 12px; }
-    header h1 { font-size: 24px; margin: 0; }
-    header nav { margin-left: auto; display: flex; gap: 20px; }
-    header nav a { font-weight: 600; font-size: 15px; transition: color 0.2s; }
-    header nav a:hover { color: var(--accent-light); }
+    /* Hero / Banner */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 40px;
+      padding: 80px 0;
+    }
+    .hero-text h1 {
+      font-size: 48px;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .hero-text p {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 30px;
+      max-width: 500px;
+    }
+    .hero-text .buttons a {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      margin-right: 16px;
+      transition: background-color 0.2s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+    .btn-primary:hover {
+      background: var(--accent-light);
+    }
+    .btn-outline {
+      border: 2px solid var(--accent);
+      color: var(--accent);
+    }
+    .btn-outline:hover {
+      background: var(--accent);
+      color: white;
+    }
 
-    .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding: 60px 0; }
-    .hero-text h2 { font-size: 40px; margin-bottom: 20px; color: var(--accent); }
-    .hero-text p { font-size: 18px; margin-bottom: 20px; color: var(--muted); }
-    .hero-text .btns { display: flex; gap: 15px; }
+    .hero-image img {
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
 
-    .hero-img img { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow); }
+    section {
+      padding: 60px 0;
+    }
+    section h2 {
+      font-size: 32px;
+      text-align: center;
+      margin-bottom: 40px;
+      color: var(--accent);
+    }
 
-    section { padding: 60px 0; }
-    section h3 { font-size: 28px; margin-bottom: 20px; text-align: center; color: var(--accent); }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 24px;
+    }
+    .card {
+      background: var(--white);
+      padding: 24px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+    }
+    .card h3 {
+      margin-bottom: 14px;
+      color: var(--dark);
+    }
+    .card p, .card ul {
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .card ul li {
+      margin-bottom: 8px;
+    }
 
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .card { background: var(--card); padding: 24px; border-radius: var(--radius); box-shadow: var(--shadow); transition: transform 0.2s; }
-    .card:hover { transform: translateY(-4px); }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
 
-    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
-    .gallery img { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow); transition: transform 0.3s; cursor: pointer; }
-    .gallery img:hover { transform: scale(1.03); }
+    .hours-loc {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .hours-loc .hours, .hours-loc .location {
+      background: var(--white);
+      padding: 24px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hours .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .hours .row:last-child {
+      border-bottom: none;
+    }
 
-    .hours, .location { padding: 20px; }
-    .hours .row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #eee; }
+    .location iframe {
+      width: 100%;
+      height: 220px;
+      border: 0;
+      border-radius: var(--radius);
+      margin-top: 16px;
+    }
 
-    footer { background: var(--accent); color: white; text-align: center; padding: 20px; margin-top: 40px; }
-    footer small { opacity: 0.8; }
-
-    .btn { display: inline-block; padding: 12px 20px; border-radius: 8px; font-weight: 600; transition: background 0.2s; }
-    .btn-primary { background: var(--accent); color: white; }
-    .btn-primary:hover { background: var(--accent-light); }
-    .btn-outline { border: 2px solid var(--accent); color: var(--accent); }
-    .btn-outline:hover { background: var(--accent); color: white; }
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 30px 0;
+      margin-top: 60px;
+    }
+    footer small {
+      opacity: 0.8;
+    }
 
     @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; text-align: center; }
-      .hero-text .btns { justify-content: center; }
-      .grid-3 { grid-template-columns: 1fr; }
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-text .buttons {
+        justify-content: center;
+      }
+      .hours-loc {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="container" style="display:flex; align-items:center; justify-content:space-between;">
-      <div class="brand">
-        <h1>Sig's Gourmet Butcher Shop</h1>
-      </div>
+    <div class="container nav-container">
+      <div class="logo">Sig’s Gourmet Butcher Shop</div>
       <nav>
         <a href="#about">About</a>
         <a href="#gallery">Gallery</a>
@@ -85,87 +218,87 @@
     </div>
   </header>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero container">
+  <main class="container">
+    <!-- Hero Section -->
+    <div class="hero">
       <div class="hero-text">
-        <h2>Fresh, Local, Hand-Crafted Cuts</h2>
-        <p>At Sig's Gourmet Butcher Shop, we provide premium meats, smoked specialties, and custom butchery with a personal touch.</p>
-        <div class="btns">
-          <a href="#gallery" class="btn btn-primary">View Our Meats</a>
-          <a href="#contact" class="btn btn-outline">Visit Us</a>
+        <h1>Premium Meats, Expert Butchery</h1>
+        <p>We’re committed to locally sourced meat, handcrafted cuts, and exceptional service. No gimmicks — just great meat.</p>
+        <div class="buttons">
+          <a href="#gallery" class="btn-primary">See Our Cuts</a>
+          <a href="#contact" class="btn-outline">Visit Us</a>
         </div>
       </div>
-      <div class="hero-img">
-        <img src="/images/hero-placeholder.jpg" alt="Showcase of fresh meats" />
+      <div class="hero-image">
+        <img src="/images/hero-placeholder.jpg" alt="Showcase of fresh cuts">
       </div>
-    </section>
+    </div>
 
-    <!-- ABOUT -->
-    <section id="about" class="container">
-      <h3>About Us</h3>
+    <!-- About Section -->
+    <section id="about">
+      <h2>About Us</h2>
       <div class="grid-3">
         <div class="card">
-          <h4>Our Story</h4>
-          <p>Sig's started as a family-run butcher shop in Wichita, built on the values of quality, traceability, and tradition. We believe every cut should tell a story.</p>
+          <h3>Our Roots</h3>
+          <p>Born from a passion for quality meat, Sig’s is a local butcher shop that values traceability, craft, and personal service.</p>
         </div>
         <div class="card">
-          <h4>What We Offer</h4>
+          <h3>Our Services</h3>
           <ul>
             <li>Hand-cut steaks & roasts</li>
-            <li>House-made sausages & smoked meats</li>
-            <li>Custom butchery & portioning</li>
+            <li>Artisan sausages & smoked goods</li>
+            <li>Custom cuts & trimming</li>
           </ul>
         </div>
         <div class="card">
-          <h4>Why Choose Us</h4>
-          <p>Locally sourced, carefully prepared, and customer-focused. From your weeknight dinner to a special event, we’ve got you covered.</p>
+          <h3>What Sets Us Apart</h3>
+          <p>We work with trusted farmers, focus on freshness, and provide cooking advice — treating every customer like a chef.</p>
         </div>
       </div>
     </section>
 
-    <!-- GALLERY -->
-    <section id="gallery" class="container">
-      <h3>Our Work</h3>
+    <!-- Gallery Section -->
+    <section id="gallery">
+      <h2>Gallery</h2>
       <div class="gallery">
-        <img src="/images/gallery-1.jpg" alt="Premium ribeye cuts">
-        <img src="/images/gallery-2.jpg" alt="House-made sausages">
-        <img src="/images/gallery-3.jpg" alt="Smoked brisket">
-        <img src="/images/gallery-4.jpg" alt="Prepared meat trays">
+        <img src="/images/gallery-1.jpg" alt="Cut of meat 1">
+        <img src="/images/gallery-2.jpg" alt="Cut or sausage">
+        <img src="/images/gallery-3.jpg" alt="Smoked meat">
+        <img src="/images/gallery-4.jpg" alt="Butcher in action">
       </div>
     </section>
 
-    <!-- HOURS & LOCATION -->
-    <section id="hours" class="container">
-      <h3>Hours & Location</h3>
-      <div class="grid-3">
-        <div class="card hours">
-          <h4>Hours</h4>
-          <div class="row"><span>Mon – Fri</span><span>9:00 AM – 6:00 PM</span></div>
+    <!-- Hours & Location -->
+    <section id="hours">
+      <h2>Hours & Location</h2>
+      <div class="hours-loc">
+        <div class="hours">
+          <h3>Open Hours</h3>
+          <div class="row"><span>Monday–Friday</span><span>9:00 AM – 6:00 PM</span></div>
           <div class="row"><span>Saturday</span><span>9:00 AM – 3:00 PM</span></div>
           <div class="row"><span>Sunday</span><span>Closed</span></div>
         </div>
-        <div class="card location">
-          <h4>Find Us</h4>
+        <div class="location">
+          <h3>Our Location</h3>
           <p>123 Main St, Wichita, KS</p>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18..." width="100%" height="200" style="border:0; border-radius:12px; margin-top:10px;" allowfullscreen loading="lazy"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18..." allowfullscreen loading="lazy"></iframe>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="container">
-      <h3>Contact Us</h3>
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact</h2>
       <div class="card">
-        <p>📞 <a href="tel:+15555555555">(555) 555‑5555</a></p>
+        <p>📞 <a href="tel:+15555555555">(555) 555-5555</a></p>
         <p>✉️ <a href="mailto:info@example.com">info@example.com</a></p>
-        <p>📍 <a href="https://www.facebook.com/sigsgourmetbutchershop" target="_blank">Facebook Page</a></p>
+        <p>📘 <a href="https://www.facebook.com/sigsgourmetbutchershop" target="_blank">Facebook Page</a></p>
       </div>
     </section>
   </main>
 
   <footer>
-    <small>© <span id="year"></span> Sig's Gourmet Butcher Shop — All rights reserved.</small>
+    <small>© <span id="year"></span> Sig’s Gourmet Butcher Shop. All rights reserved.</small>
   </footer>
 
   <script>
